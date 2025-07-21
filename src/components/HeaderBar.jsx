@@ -6,19 +6,45 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 
 const HeaderBar = () => {
-  const [playersOnline, setPlayersOnline] =
-    useState();
+  const [playersOnline, setPlayersOnline] = useState(0);
+
+  // Hàm tính số người online theo khung giờ UTC+7
+  const getRandomPlayerCount = () => {
+    const now = new Date();
+    // Switch UTC+7
+    const utc7Time = new Date(now.getTime() + (7 * 60 * 60 * 1000));
+    const hour = utc7Time.getUTCHours();
+    
+    let min, max;
+    
+    if (hour >= 6 && hour < 9) {
+    
+      min = 150;
+      max = 300;
+    } else if (hour >= 9 && hour < 12) {
+
+      min = 200;
+      max = 350;
+    } else if (hour >= 13 && hour < 17) {
+     
+      min = 300;
+      max = 500;
+    } else if (hour >= 18 && hour < 24) {
+    
+      min = 600;
+      max = 999;
+    } else {
+    
+      min = 300;
+      max = 500;
+    }
+    
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
   useEffect(() => {
-    // Tạo hiệu ứng số người chơi thay đổi nhẹ nhàng
-    const interval = setInterval(() => {
-      setPlayersOnline(
-        (prev) =>
-          prev +
-          Math.floor(Math.random() * 5 - 2),
-      );
-    }, 5000);
-    return () => clearInterval(interval);
+    // Set initial player count based on time
+    setPlayersOnline(getRandomPlayerCount());
   }, []);
 
   return (
