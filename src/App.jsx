@@ -20,6 +20,10 @@ function App() {
             element={<MainPage />}
           />
           <Route
+            path='/loading'
+            element={<LoadingScreen />}
+          />
+          <Route
             path='/gachagame'
             element={<MinigameGacha />}
           />

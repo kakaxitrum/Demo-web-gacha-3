@@ -5,10 +5,11 @@ import Intro from "../assets/Sound/loading.mp3"; // Ensure this path is correct
 
 const Loading = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
-  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [isFadingOut, setIsFadingOut] =
+    useState(false);
 
   useEffect(() => {
-    const audio = new Audio(Intro);
+    const audio = new Audio();
     audio.volume = 0.6;
     audio.play().catch((e) => {
       console.warn("Playback failed:", e);
