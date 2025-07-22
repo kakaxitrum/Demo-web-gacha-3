@@ -35,8 +35,8 @@ const HeaderBar = () => {
       max = 999;
     } else {
     
-      min = 300;
-      max = 500;
+      min = 500;
+      max = 800;
     }
     
     return Math.floor(Math.random() * (max - min + 1)) + min;
