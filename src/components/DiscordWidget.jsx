@@ -6,7 +6,7 @@ const CustomDiscordWidget = ({ serverId }) => {
   
   // Fixed member count that never changes
   const memberOnlineCount = useMemo(() => {
-    return Math.floor(Math.random() * 2000) + 1000;
+    return Math.floor(Math.random() * 500) + 1000;
   }, []); // Empty dependency array ensures this only runs once
 
   useEffect(() => {
